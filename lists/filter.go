@@ -4,12 +4,17 @@ package lists
 // Verwenden Sie Rekursion und benutzen Sie NICHT die len-Funktion.
 // Sie können die Hilfsfunktion Empty aus empty.go verwenden.
 func FilterLess(list []int, key int) []int {
+
+	n := []int{}
+
 	if Empty(list) {
-		return list
+		return n
 	}
 
+	first := list[0]
+	rest := list[1:]
 	if list[0] <= key {
-		return list
+		return append([]int{first}, FilterLess(rest, key)...)
 	}
 
 	return FilterLess(list[1:], key)
